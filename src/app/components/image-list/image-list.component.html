@@ -1,1 +1,40 @@
-<p>image-list works!</p>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="row row-cols-1 row-cols-md-4 g-4 mt-4">
+  <div *ngFor="let image of imagesList" class="col">
+    <div class="card">
+      <img [src]="image.previewURL" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{image.user}}</h5>
+        <p class="card-text">{{image.tags}}</p>
+        <a [href]="image.largeImageURL" target="_blank" class="btn btn-primary">View</a>
+      </div>
+      <div class="card-footer text-muted text-center">
+        <div class="row">
+          <div class="col">
+            <p class="info">Likes</p>
+            <span class="badge bg-success">{{image.likes}}</span>
+          </div>
+          <div class="col">
+            <p class="info">Views</p>
+            <span class="badge bg-primary">{{image.views}}</span>
+          </div>
+          <div class="col">
+            <p class="info">Downloads</p>
+            <span class="badge bg-warning">{{image.downloads}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="imagesList.length" class="d-flex justify-content-center mt-4">
+  <ul class="pagination pagination-lg">
+    <li class="page-item" *ngIf="previousPageClass()">
+      <a class="page-link" (click)="previousPage()">&laquo; Previous</a>
+    </li>
+    <li class="page-item" *ngIf="nextPageClass()">
+      <a class="page-link" (click)="nextPage()">Next &raquo;</a>
+    </li>
+  </ul>
+</div>

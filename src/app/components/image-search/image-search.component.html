@@ -1,1 +1,12 @@
-<p>image-search works!</p>
+<div class="container">
+  <form (ngSubmit)="imageSearch()">
+    <div class="row">
+      <div class="col-lg-8">
+        <input type="text" id="image-search" class="form-control form-control-lg" placeholder="Enter the name of the image" [(ngModel)]="imageName" name="img">
+      </div>
+      <div class="col-lg-4">
+        <button type="submit" class="btn btn-primary btn-block btn-lg">SEARCH</button>
+      </div>
+    </div>
+  </form>
+</div>
